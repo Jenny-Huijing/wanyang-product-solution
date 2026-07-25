@@ -1,0 +1,1460 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="万洋产业园数智金融服务平台企业端APP/小程序MVP高保真原型">
+  <meta property="og:title" content="万洋企业服务APP · MVP高保真原型">
+  <meta property="og:description" content="园区服务、综合金融与大模型AI助手">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://jenny-huijing.github.io/wanyang-product-solution/mvp-og.png">
+  <title>万洋企业服务APP｜MVP高保真原型</title>
+  <style>
+    :root {
+      --blue-700: #165ce9;
+      --blue-600: #2675f4;
+      --blue-500: #4a8dff;
+      --blue-100: #eaf2ff;
+      --blue-50: #f5f8ff;
+      --cyan: #18c7d4;
+      --orange: #ff7a45;
+      --green: #17b889;
+      --purple: #7d6cf1;
+      --ink: #172033;
+      --ink-2: #536078;
+      --ink-3: #8b95a8;
+      --line: #edf0f5;
+      --surface: #f5f7fb;
+      --white: #fff;
+      --danger: #ff5252;
+      --shadow: 0 14px 38px rgba(22, 65, 145, .12);
+      --phone-w: 390px;
+      --phone-h: 844px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(74,141,255,.22), transparent 28rem),
+        radial-gradient(circle at 80% 82%, rgba(24,199,212,.14), transparent 26rem),
+        #edf3ff;
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .prototype-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 330px var(--phone-w);
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      padding: 34px 20px;
+    }
+    .prototype-note {
+      align-self: center;
+    }
+    .prototype-kicker {
+      color: var(--blue-700);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    .prototype-note h1 {
+      margin: 12px 0 14px;
+      font-size: 34px;
+      line-height: 1.18;
+      letter-spacing: -.03em;
+    }
+    .prototype-note > p {
+      margin: 0;
+      color: var(--ink-2);
+      line-height: 1.75;
+    }
+    .feature-list {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .feature {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 11px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+    }
+    .feature i {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-700);
+      background: var(--blue-100);
+      border-radius: 11px;
+      font-style: normal;
+      font-weight: 700;
+    }
+    .feature strong { display: block; font-size: 14px; }
+    .feature span { display: block; color: var(--ink-3); font-size: 11px; margin-top: 2px; }
+    .prototype-tip {
+      color: var(--ink-3);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .phone {
+      position: relative;
+      width: var(--phone-w);
+      height: var(--phone-h);
+      overflow: hidden;
+      background: var(--surface);
+      border: 9px solid #17233b;
+      border-radius: 48px;
+      box-shadow: 0 34px 90px rgba(22, 45, 95, .25), inset 0 0 0 1px rgba(255,255,255,.18);
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      z-index: 30;
+      left: 50%;
+      top: 8px;
+      width: 108px;
+      height: 27px;
+      background: #17233b;
+      border-radius: 18px;
+      transform: translateX(-50%);
+    }
+    .statusbar {
+      position: absolute;
+      z-index: 22;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
+      pointer-events: none;
+    }
+    .status-icons { display: flex; gap: 6px; align-items: center; }
+    .signal { letter-spacing: -2px; font-size: 10px; }
+    .battery {
+      width: 22px;
+      height: 11px;
+      padding: 1px;
+      border: 1.5px solid currentColor;
+      border-radius: 3px;
+    }
+    .battery::after { content: ""; display: block; height: 100%; width: 78%; background: currentColor; border-radius: 1px; }
+    .screen {
+      position: absolute;
+      inset: 0;
+      display: none;
+      overflow-y: auto;
+      padding: 48px 0 82px;
+      background: var(--surface);
+      scrollbar-width: none;
+    }
+    .screen::-webkit-scrollbar { display: none; }
+    .screen.active { display: block; }
+    .home-top {
+      position: relative;
+      overflow: hidden;
+      min-height: 286px;
+      padding: 18px 20px 86px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,.22), transparent 110px),
+        linear-gradient(145deg, #175fea, #4b8fff 60%, #53a8ff);
+    }
+    .home-top::after {
+      content: "";
+      position: absolute;
+      right: -25px;
+      bottom: 20px;
+      width: 180px;
+      height: 180px;
+      opacity: .18;
+      background:
+        linear-gradient(135deg, transparent 49%, #fff 50%, transparent 51%),
+        linear-gradient(45deg, transparent 49%, #fff 50%, transparent 51%);
+      background-size: 34px 34px;
+      transform: rotate(12deg);
+    }
+    .app-head {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .park-name {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 18px;
+      font-weight: 650;
+    }
+    .park-name small { opacity: .75; font-size: 10px; }
+    .head-actions { display: flex; gap: 9px; }
+    .head-button {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .greeting {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
+    }
+    .greeting small { color: rgba(255,255,255,.72); }
+    .greeting h2 { margin: 4px 0; font-size: 23px; }
+    .greeting p { margin: 0; color: rgba(255,255,255,.72); font-size: 12px; }
+    .hero-metrics {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .metric-chip {
+      padding: 9px 11px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+    }
+    .metric-chip strong { display: block; font-size: 16px; }
+    .metric-chip span { display: block; color: rgba(255,255,255,.66); font-size: 9px; }
+    .home-body {
+      position: relative;
+      z-index: 5;
+      margin-top: -68px;
+      padding: 0 14px 22px;
+    }
+    .ai-entry {
+      position: relative;
+      overflow: hidden;
+      padding: 16px;
+      color: var(--ink);
+      background: linear-gradient(135deg, #fdfefe, #e9f3ff);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .ai-entry::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      top: -40px;
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle, rgba(74,141,255,.20), transparent 65%);
+    }
+    .ai-title {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .ai-orb {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: radial-gradient(circle at 30% 25%, #87e5ff, #3a7cff 48%, #6b5ff2);
+      border: 3px solid rgba(255,255,255,.75);
+      border-radius: 17px;
+      box-shadow: 0 8px 20px rgba(38,117,244,.28);
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .ai-orb::before,
+    .ai-orb::after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      width: 5px;
+      height: 7px;
+      background: #dff9ff;
+      border-radius: 4px;
+    }
+    .ai-orb::before { left: 13px; }
+    .ai-orb::after { right: 13px; }
+    .ai-title strong { display: block; font-size: 16px; }
+    .ai-title span { display: block; color: var(--ink-3); font-size: 10px; margin-top: 2px; }
+    .ai-search {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 42px;
+      margin-top: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 11px;
+      color: var(--ink-3);
+      background: var(--white);
+      border: 1px solid #e5ebf4;
+      border-radius: 13px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .ai-search b {
+      margin-left: auto;
+      color: var(--blue-600);
+      font-size: 12px;
+    }
+    .ai-suggestions {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 6px;
+      margin-top: 9px;
+      overflow: hidden;
+    }
+    .mini-chip {
+      flex: 0 0 auto;
+      padding: 5px 8px;
+      color: var(--blue-700);
+      background: var(--blue-100);
+      border: 0;
+      border-radius: 999px;
+      font-size: 9px;
+      cursor: pointer;
+    }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+      padding: 14px 8px 10px;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 8px 26px rgba(22,65,145,.06);
+    }
+    .quick {
+      padding: 0;
+      text-align: center;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+    .quick-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 6px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: linear-gradient(145deg, #4aa5ff, #2668ee);
+      border-radius: 14px;
+      box-shadow: 0 7px 13px rgba(38,104,238,.18);
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .quick:nth-child(2) .quick-icon { background: linear-gradient(145deg, #35d1d8, #18a9bf); }
+    .quick:nth-child(3) .quick-icon { background: linear-gradient(145deg, #8b80ff, #6554e9); }
+    .quick:nth-child(4) .quick-icon { background: linear-gradient(145deg, #ff9a61, #ff7048); }
+    .quick span { display: block; font-size: 11px; font-weight: 600; }
+    .ticker {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: var(--white);
+      border-radius: 12px;
+      font-size: 10px;
+    }
+    .ticker strong { color: var(--orange); white-space: nowrap; }
+    .ticker span { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 18px 2px 10px;
+    }
+    .section-title strong { font-size: 17px; }
+    .section-title button {
+      color: var(--ink-3);
+      background: transparent;
+      border: 0;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .insight-card {
+      position: relative;
+      overflow: hidden;
+      padding: 15px;
+      color: var(--white);
+      background: linear-gradient(135deg, #1e64e8, #5b8cff 55%, #6c6ef1);
+      border-radius: 18px;
+      box-shadow: 0 12px 25px rgba(34,95,225,.22);
+    }
+    .insight-card::after {
+      content: "AI";
+      position: absolute;
+      right: -8px;
+      bottom: -30px;
+      color: rgba(255,255,255,.08);
+      font-size: 96px;
+      font-weight: 800;
+    }
+    .insight-head { display: flex; align-items: center; justify-content: space-between; }
+    .insight-head span { font-size: 9px; color: rgba(255,255,255,.68); }
+    .insight-card h3 { margin: 9px 0 5px; font-size: 15px; }
+    .insight-card p { margin: 0; color: rgba(255,255,255,.75); font-size: 10px; line-height: 1.55; max-width: 280px; }
+    .insight-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .insight-foot small { color: rgba(255,255,255,.62); font-size: 8px; }
+    .ghost-button {
+      padding: 6px 9px;
+      color: var(--white);
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 8px;
+      font-size: 9px;
+      cursor: pointer;
+    }
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+    }
+    .service-card {
+      min-height: 92px;
+      padding: 13px;
+      text-align: left;
+      background: var(--white);
+      border: 0;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    .service-card:nth-child(1) { background: linear-gradient(145deg, #eef5ff, #e7f1ff); }
+    .service-card:nth-child(2) { background: linear-gradient(145deg, #eafbf8, #e2f6f3); }
+    .service-card:nth-child(3) { background: linear-gradient(145deg, #fff2eb, #ffebe4); }
+    .service-card:nth-child(4) { background: linear-gradient(145deg, #f1efff, #ebe8ff); }
+    .service-card strong { display: block; font-size: 13px; }
+    .service-card span { display: block; margin-top: 4px; color: var(--ink-3); font-size: 9px; }
+    .service-card b {
+      float: right;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-600);
+      background: rgba(255,255,255,.65);
+      border-radius: 11px;
+    }
+    .service-head {
+      padding: 18px 16px 14px;
+      background: var(--white);
+    }
+    .screen-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .screen-title h2 { margin: 0; font-size: 21px; }
+    .screen-title span { color: var(--ink-3); font-size: 10px; }
+    .search-box {
+      width: 100%;
+      height: 40px;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+      color: var(--ink-3);
+      background: var(--surface);
+      border: 0;
+      border-radius: 13px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .featured-finance {
+      margin: 12px 14px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 8px;
+    }
+    .finance-main {
+      position: relative;
+      overflow: hidden;
+      min-height: 128px;
+      padding: 15px;
+      color: var(--white);
+      text-align: left;
+      background: linear-gradient(145deg, #1868eb, #38a3ff);
+      border: 0;
+      border-radius: 17px;
+      cursor: pointer;
+    }
+    .finance-main::after {
+      content: "¥";
+      position: absolute;
+      right: -4px;
+      bottom: -36px;
+      color: rgba(255,255,255,.14);
+      font-size: 110px;
+      font-weight: 800;
+    }
+    .finance-main small { color: rgba(255,255,255,.68); }
+    .finance-main h3 { margin: 7px 0 3px; font-size: 18px; }
+    .finance-main p { margin: 0; font-size: 10px; color: rgba(255,255,255,.75); }
+    .finance-main span { display: inline-block; margin-top: 14px; padding: 5px 8px; font-size: 9px; background: rgba(255,255,255,.16); border-radius: 8px; }
+    .finance-side {
+      display: grid;
+      gap: 8px;
+    }
+    .finance-side button {
+      padding: 11px;
+      text-align: left;
+      background: var(--white);
+      border: 0;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(22,65,145,.05);
+    }
+    .finance-side strong { display: block; font-size: 12px; }
+    .finance-side span { display: block; color: var(--ink-3); font-size: 8px; margin-top: 3px; }
+    .category-tabs {
+      position: sticky;
+      top: 0;
+      z-index: 6;
+      display: flex;
+      gap: 4px;
+      padding: 9px 14px;
+      background: rgba(245,247,251,.94);
+      backdrop-filter: blur(8px);
+    }
+    .category-tab {
+      flex: 1;
+      padding: 7px 4px;
+      color: var(--ink-3);
+      background: transparent;
+      border: 0;
+      border-radius: 10px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .category-tab.active { color: var(--blue-700); background: var(--white); box-shadow: 0 4px 14px rgba(22,65,145,.07); font-weight: 650; }
+    .service-groups { padding: 0 14px 20px; }
+    .service-group {
+      margin-top: 10px;
+      padding: 14px;
+      background: var(--white);
+      border-radius: 17px;
+    }
+    .service-group h3 { margin: 0 0 12px; font-size: 15px; }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px 6px;
+    }
+    .icon-service {
+      padding: 0;
+      text-align: center;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+    .icon-service i {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 6px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-600);
+      background: linear-gradient(145deg, #f3f7ff, #e7f0ff);
+      border-radius: 13px;
+      font-style: normal;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .icon-service span { display: block; font-size: 10px; line-height: 1.3; }
+    .ai-screen {
+      padding-bottom: 74px;
+      background:
+        radial-gradient(circle at 95% 5%, rgba(128,185,255,.48), transparent 220px),
+        linear-gradient(180deg, #cfdeff, #eef3ff 48%, #f7f9fd);
+    }
+    .ai-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 176px;
+      padding: 22px 18px 18px;
+    }
+    .ai-hero::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -45px;
+      width: 190px;
+      height: 190px;
+      background: radial-gradient(circle at 45% 45%, rgba(255,255,255,.75), rgba(82,143,255,.25) 45%, transparent 68%);
+      border-radius: 50%;
+    }
+    .robot {
+      position: absolute;
+      z-index: 2;
+      right: 25px;
+      top: 26px;
+      width: 88px;
+      height: 82px;
+      background: linear-gradient(145deg, #fefeff, #cfe0ff);
+      border: 3px solid rgba(255,255,255,.8);
+      border-radius: 36px 36px 30px 30px;
+      box-shadow: 0 16px 30px rgba(45,93,180,.22);
+      transform: rotate(3deg);
+    }
+    .robot-face {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      top: 13px;
+      height: 40px;
+      background: linear-gradient(145deg, #153c84, #081a42);
+      border-radius: 19px;
+    }
+    .robot-face::before,
+    .robot-face::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      width: 8px;
+      height: 10px;
+      background: #61eaff;
+      border-radius: 50%;
+      box-shadow: 0 0 9px #61eaff;
+    }
+    .robot-face::before { left: 15px; }
+    .robot-face::after { right: 15px; }
+    .robot::after {
+      content: "AI";
+      position: absolute;
+      left: 50%;
+      bottom: 6px;
+      color: var(--blue-600);
+      font-size: 10px;
+      font-weight: 800;
+      transform: translateX(-50%);
+    }
+    .ai-hero-copy {
+      position: relative;
+      z-index: 3;
+      max-width: 235px;
+    }
+    .ai-hero-copy small { color: var(--blue-700); font-weight: 700; }
+    .ai-hero-copy h2 { margin: 8px 0 5px; font-size: 21px; line-height: 1.28; }
+    .ai-hero-copy p { margin: 0; color: var(--ink-2); font-size: 10px; line-height: 1.5; }
+    .ai-capabilities {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      gap: 5px;
+      margin-top: 14px;
+    }
+    .ai-capabilities span {
+      padding: 5px 7px;
+      color: var(--blue-700);
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 999px;
+      font-size: 8px;
+    }
+    .chat {
+      padding: 0 14px 114px;
+    }
+    .suggestion-panel {
+      padding: 13px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+    }
+    .suggestion-panel strong { font-size: 12px; }
+    .ai-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .ai-action {
+      padding: 11px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid rgba(54,114,225,.08);
+      border-radius: 13px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .ai-action i {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-700);
+      background: var(--blue-100);
+      border-radius: 9px;
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 750;
+    }
+    .ai-action span { font-size: 10px; font-weight: 650; }
+    .messages { margin-top: 16px; display: grid; gap: 10px; }
+    .message {
+      max-width: 86%;
+      padding: 10px 12px;
+      background: var(--white);
+      border-radius: 4px 15px 15px 15px;
+      box-shadow: 0 5px 18px rgba(22,65,145,.06);
+      font-size: 11px;
+      line-height: 1.55;
+      animation: rise .25s ease;
+    }
+    .message.user {
+      margin-left: auto;
+      color: var(--white);
+      background: var(--blue-600);
+      border-radius: 15px 4px 15px 15px;
+      box-shadow: 0 6px 18px rgba(38,117,244,.20);
+    }
+    .message.thinking { color: var(--ink-3); }
+    .message.thinking::after { content: "···"; animation: blink 1s infinite; }
+    .ai-result {
+      max-width: 100%;
+      padding: 13px;
+      background: var(--white);
+      border: 1px solid #e5ebf7;
+      border-radius: 17px;
+      box-shadow: 0 10px 25px rgba(22,65,145,.08);
+      animation: rise .25s ease;
+    }
+    .result-head { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+    .result-head strong { font-size: 13px; }
+    .result-head span { padding: 4px 6px; color: var(--green); background: #e9faf5; border-radius: 7px; font-size: 8px; }
+    .result-desc { margin: 7px 0 0; color: var(--ink-2); font-size: 9px; line-height: 1.5; }
+    .result-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .result-metrics div { padding: 8px; background: var(--surface); border-radius: 9px; }
+    .result-metrics strong { display: block; color: var(--blue-700); font-size: 13px; }
+    .result-metrics span { display: block; color: var(--ink-3); font-size: 7px; margin-top: 2px; }
+    .result-action {
+      width: 100%;
+      min-height: 38px;
+      margin-top: 10px;
+      color: var(--white);
+      background: var(--blue-600);
+      border: 0;
+      border-radius: 11px;
+      font-size: 10px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .result-source { margin-top: 7px; color: var(--ink-3); font-size: 7px; }
+    .chat-composer {
+      position: absolute;
+      z-index: 18;
+      left: 12px;
+      right: 12px;
+      bottom: 72px;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px 7px 13px;
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(255,255,255,.98);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(22,65,145,.15);
+      backdrop-filter: blur(12px);
+    }
+    .chat-composer input {
+      min-width: 0;
+      flex: 1;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      outline: 0;
+      font-size: 11px;
+    }
+    .send-button {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--blue-600);
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .profile-top {
+      padding: 24px 18px 20px;
+      background: linear-gradient(180deg, #eaf2ff, var(--white));
+    }
+    .profile-head { display: flex; gap: 12px; align-items: center; }
+    .avatar {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: linear-gradient(145deg, #5da5ff, #296de9);
+      border: 4px solid var(--white);
+      border-radius: 20px;
+      box-shadow: 0 7px 18px rgba(38,117,244,.18);
+      font-weight: 750;
+    }
+    .profile-head h2 { margin: 0; font-size: 18px; }
+    .profile-head p { margin: 4px 0 0; color: var(--ink-3); font-size: 9px; }
+    .verified { margin-left: auto; padding: 5px 7px; color: var(--green); background: #e6faf4; border-radius: 8px; font-size: 8px; }
+    .company-card {
+      margin-top: 16px;
+      padding: 13px;
+      color: var(--white);
+      background: linear-gradient(135deg, #1d60df, #488cff);
+      border-radius: 16px;
+    }
+    .company-card small { color: rgba(255,255,255,.64); }
+    .company-card strong { display: block; margin-top: 4px; font-size: 13px; }
+    .company-meta { display: flex; justify-content: space-between; margin-top: 12px; }
+    .company-meta span { font-size: 8px; color: rgba(255,255,255,.72); }
+    .my-body { padding: 12px 14px 20px; }
+    .my-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 14px 8px;
+      background: var(--white);
+      border-radius: 17px;
+    }
+    .my-shortcut { padding: 0; background: transparent; border: 0; cursor: pointer; text-align: center; }
+    .my-shortcut i {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 6px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-600);
+      background: var(--blue-50);
+      border-radius: 11px;
+      font-style: normal;
+      font-weight: 750;
+    }
+    .my-shortcut span { font-size: 9px; }
+    .list-card { margin-top: 12px; padding: 0 14px; background: var(--white); border-radius: 17px; }
+    .list-item {
+      width: 100%;
+      min-height: 49px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+      text-align: left;
+    }
+    .list-item:last-child { border-bottom: 0; }
+    .list-item i {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-700);
+      background: var(--blue-50);
+      border-radius: 9px;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 750;
+    }
+    .list-item strong { font-size: 11px; }
+    .list-item span { margin-left: auto; color: var(--ink-3); font-size: 10px; }
+    .bottom-nav {
+      position: absolute;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 72px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 5px 8px 10px;
+      background: rgba(255,255,255,.96);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+    .nav-button {
+      position: relative;
+      padding: 4px 0;
+      color: var(--ink-3);
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 9px;
+    }
+    .nav-button i {
+      display: block;
+      width: 28px;
+      height: 28px;
+      margin: 0 auto 1px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      font-style: normal;
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .nav-button.active { color: var(--blue-700); font-weight: 650; }
+    .nav-button.active i { background: var(--blue-100); }
+    .nav-button.ai-nav i {
+      width: 42px;
+      height: 42px;
+      margin-top: -17px;
+      color: var(--white);
+      background: radial-gradient(circle at 30% 25%, #75dcff, #347afa 52%, #745ff2);
+      border: 4px solid var(--white);
+      border-radius: 15px;
+      box-shadow: 0 7px 18px rgba(38,117,244,.28);
+    }
+    .nav-button.ai-nav span { display: block; margin-top: -1px; }
+    .modal-layer {
+      position: absolute;
+      z-index: 50;
+      inset: 0;
+      display: none;
+      align-items: flex-end;
+      padding: 14px;
+      background: rgba(13,28,56,.42);
+      backdrop-filter: blur(4px);
+    }
+    .modal-layer.open { display: flex; }
+    .modal {
+      width: 100%;
+      max-height: 78%;
+      overflow-y: auto;
+      padding: 18px;
+      background: var(--white);
+      border-radius: 22px;
+      animation: slideUp .22s ease;
+    }
+    .modal-handle { width: 38px; height: 4px; margin: -8px auto 14px; background: #d8deea; border-radius: 4px; }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; }
+    .modal-head h3 { margin: 0; font-size: 17px; }
+    .modal-close { width: 30px; height: 30px; border: 0; background: var(--surface); border-radius: 50%; cursor: pointer; }
+    .bill-total {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .bill-total small { color: var(--ink-3); }
+    .bill-total strong { display: block; margin-top: 4px; font-size: 32px; }
+    .bill-lines { display: grid; gap: 9px; }
+    .bill-line { display: flex; justify-content: space-between; padding: 10px; background: var(--surface); border-radius: 10px; font-size: 11px; }
+    .bill-line span { color: var(--ink-2); }
+    .primary-button {
+      width: 100%;
+      min-height: 44px;
+      margin-top: 16px;
+      color: var(--white);
+      background: var(--blue-600);
+      border: 0;
+      border-radius: 13px;
+      font-size: 12px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .success {
+      padding: 24px 0 10px;
+      text-align: center;
+    }
+    .success-mark {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+      font-size: 26px;
+    }
+    .success h3 { margin: 0; }
+    .success p { margin: 7px 0 0; color: var(--ink-3); font-size: 10px; }
+    .toast {
+      position: absolute;
+      z-index: 70;
+      left: 50%;
+      top: 64px;
+      display: none;
+      padding: 9px 12px;
+      color: var(--white);
+      background: rgba(16,29,52,.88);
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.14);
+      font-size: 10px;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .toast.show { display: block; animation: rise .2s ease; }
+    @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes rise { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes blink { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    @media (max-width: 780px) {
+      body { background: var(--surface); }
+      .prototype-shell { display: block; min-height: 100dvh; padding: 0; }
+      .prototype-note { display: none; }
+      .phone {
+        width: 100%;
+        height: 100dvh;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .phone::before { display: none; }
+    }
+    @media (max-height: 760px) and (min-width: 781px) {
+      .prototype-shell { align-items: start; }
+      .phone { transform: scale(.86); transform-origin: top center; margin-bottom: -118px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="prototype-shell">
+    <aside class="prototype-note">
+      <div class="prototype-kicker">MVP HIGH-FIDELITY PROTOTYPE</div>
+      <h1>万洋企业服务APP<br>交互原型</h1>
+      <p>面向园区企业老板与财务人员，聚合园区服务、企业成长和综合金融能力。AI助手不仅回答问题，更能理解意图并直接发起业务。</p>
+      <div class="feature-list">
+        <div class="feature"><i>01</i><div><strong>一站式园区服务</strong><span>缴费、报修、停车、政策与企业服务</span></div></div>
+        <div class="feature"><i>02</i><div><strong>综合金融服务</strong><span>开户、票据、融资、代发与供应链金融</span></div></div>
+        <div class="feature"><i>AI</i><div><strong>大模型智能办事</strong><span>需求识别、方案生成、材料预填和工单执行</span></div></div>
+      </div>
+      <p class="prototype-tip">点击手机底部导航、首页快捷入口或AI建议问题，可体验主要业务流程。本页面为MVP概念验证，数据均为演示。</p>
+    </aside>
+
+    <section class="phone" aria-label="万洋企业服务APP原型">
+      <div class="statusbar"><span>9:41</span><span class="status-icons"><span class="signal">▂▄▆█</span><span>⌁</span><span class="battery"></span></span></div>
+
+      <section class="screen active" id="screen-home" data-screen="home">
+        <div class="home-top">
+          <div class="app-head">
+            <div class="park-name">平阳万洋众创城 <small>▼</small></div>
+            <div class="head-actions">
+              <button class="head-button" type="button" data-toast="搜索企业与服务">⌕</button>
+              <button class="head-button" type="button" data-toast="扫一扫">▣</button>
+              <button class="head-button" type="button" data-toast="您有2条新消息">•</button>
+            </div>
+          </div>
+          <div class="greeting">
+            <small>下午好，王总</small>
+            <h2>企业经营，一站办</h2>
+            <p>浙江博锐汽配有限公司 · 已认证</p>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric-chip"><strong>2</strong><span>待办事项</span></div>
+            <div class="metric-chip"><strong>¥ 12.6万</strong><span>本月待缴</span></div>
+            <div class="metric-chip"><strong>A级</strong><span>园区信用</span></div>
+          </div>
+        </div>
+        <div class="home-body">
+          <article class="ai-entry">
+            <div class="ai-title">
+              <div class="ai-orb">P</div>
+              <div><strong>平安万洋AI管家</strong><span>懂园区、懂经营、懂金融，还能直接替您办事</span></div>
+            </div>
+            <button class="ai-search" type="button" data-open-ai="default"><span>问经营、查账单、找融资、办园区服务…</span><b>语音 ◉</b></button>
+            <div class="ai-suggestions">
+              <button class="mini-chip" type="button" data-open-ai="bill">查本月待缴</button>
+              <button class="mini-chip" type="button" data-open-ai="finance">帮我申请500万设备款</button>
+              <button class="mini-chip" type="button" data-open-ai="policy">匹配可申报政策</button>
+            </div>
+          </article>
+
+          <div class="quick-grid" aria-label="核心快捷服务">
+            <button class="quick" type="button" data-modal="bill"><i class="quick-icon">¥</i><span>一站通缴费</span></button>
+            <button class="quick" type="button" data-toast="票据询价：平安优先，多行比价"><i class="quick-icon">票</i><span>票据贴现</span></button>
+            <button class="quick" type="button" data-open-ai="finance"><i class="quick-icon">融</i><span>企业融资</span></button>
+            <button class="quick" type="button" data-toast="代发工资企业签约"><i class="quick-icon">薪</i><span>工资代发</span></button>
+          </div>
+
+          <div class="ticker"><strong>最新通知</strong><span>7月物业及水费账单已生成，请于7月31日前完成缴费</span></div>
+
+          <div class="section-title"><strong>AI经营简报</strong><button type="button" data-open-ai="insight">查看详情 ›</button></div>
+          <article class="insight-card">
+            <div class="insight-head"><strong>今日经营洞察</strong><span>由平安AI生成 · 09:20</span></div>
+            <h3>产能利用率上升，存在扩产融资机会</h3>
+            <p>近3个月用电量连续增长12%，员工新增8人。结合行业订单周期，建议提前准备设备融资与流动资金。</p>
+            <div class="insight-foot"><small>依据：园区能耗、用工、代账授权数据</small><button class="ghost-button" type="button" data-open-ai="finance">生成融资方案</button></div>
+          </article>
+
+          <div class="section-title"><strong>企业与园区服务</strong><button type="button" data-tab="services">全部服务 ›</button></div>
+          <div class="service-cards">
+            <button class="service-card" type="button" data-modal="bill"><b>账</b><strong>物业水电</strong><span>统一账单 · 在线缴费</span></button>
+            <button class="service-card" type="button" data-open-ai="repair"><b>修</b><strong>智能报修</strong><span>一句话生成工单</span></button>
+            <button class="service-card" type="button" data-open-ai="policy"><b>策</b><strong>政策匹配</strong><span>高新 · 技改 · 补贴</span></button>
+            <button class="service-card" type="button" data-toast="园区供需广场"><b>链</b><strong>产业协同</strong><span>供需 · 采购 · 物流</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-services" data-screen="services">
+        <div class="service-head">
+          <div class="screen-title"><h2>服务中心</h2><span>企业全生命周期</span></div>
+          <button class="search-box" type="button" data-toast="可搜索园区、金融和企业服务">⌕　搜索您需要的服务</button>
+        </div>
+        <div class="featured-finance">
+          <button class="finance-main" type="button" data-open-ai="finance">
+            <small>AI智能匹配</small><h3>企业融资</h3><p>基于经营数据预估可贷额度</p><span>立即测额 ›</span>
+          </button>
+          <div class="finance-side">
+            <button type="button" data-toast="票据询价"><strong>票据服务</strong><span>多行比价 · 快速贴现</span></button>
+            <button type="button" data-toast="企业预约开户"><strong>预约开户</strong><span>材料预填 · 进度可查</span></button>
+          </div>
+        </div>
+        <div class="category-tabs">
+          <button class="category-tab active" type="button">全部</button>
+          <button class="category-tab" type="button">园区</button>
+          <button class="category-tab" type="button">金融</button>
+          <button class="category-tab" type="button">企业</button>
+        </div>
+        <div class="service-groups">
+          <section class="service-group">
+            <h3>园区运营服务</h3>
+            <div class="icon-grid">
+              <button class="icon-service" type="button" data-modal="bill"><i>¥</i><span>物业缴费</span></button>
+              <button class="icon-service" type="button" data-modal="bill"><i>水</i><span>水费账单</span></button>
+              <button class="icon-service" type="button" data-open-ai="repair"><i>修</i><span>物业报修</span></button>
+              <button class="icon-service" type="button" data-toast="停车服务"><i>车</i><span>停车月卡</span></button>
+              <button class="icon-service" type="button" data-toast="访客预约"><i>访</i><span>访客预约</span></button>
+              <button class="icon-service" type="button" data-toast="电子发票"><i>票</i><span>电子发票</span></button>
+              <button class="icon-service" type="button" data-toast="一卡通"><i>卡</i><span>园区一卡通</span></button>
+              <button class="icon-service" type="button" data-toast="投诉建议"><i>诉</i><span>投诉建议</span></button>
+            </div>
+          </section>
+          <section class="service-group">
+            <h3>综合金融服务</h3>
+            <div class="icon-grid">
+              <button class="icon-service" type="button" data-toast="企业预约开户"><i>户</i><span>企业开户</span></button>
+              <button class="icon-service" type="button" data-toast="票据服务"><i>贴</i><span>票据贴现</span></button>
+              <button class="icon-service" type="button" data-open-ai="finance"><i>融</i><span>普惠融资</span></button>
+              <button class="icon-service" type="button" data-toast="工资代发"><i>薪</i><span>工资代发</span></button>
+              <button class="icon-service" type="button" data-toast="设备融资"><i>设</i><span>设备融资</span></button>
+              <button class="icon-service" type="button" data-toast="供应链金融"><i>链</i><span>供应链金融</span></button>
+              <button class="icon-service" type="button" data-toast="企业保险"><i>保</i><span>企业保险</span></button>
+              <button class="icon-service" type="button" data-toast="更多金融服务"><i>···</i><span>更多服务</span></button>
+            </div>
+          </section>
+          <section class="service-group">
+            <h3>企业成长服务</h3>
+            <div class="icon-grid">
+              <button class="icon-service" type="button" data-open-ai="policy"><i>策</i><span>政策匹配</span></button>
+              <button class="icon-service" type="button" data-toast="工商财税"><i>税</i><span>工商财税</span></button>
+              <button class="icon-service" type="button" data-toast="高新申报"><i>高</i><span>高新申报</span></button>
+              <button class="icon-service" type="button" data-toast="技改服务"><i>技</i><span>技改服务</span></button>
+              <button class="icon-service" type="button" data-toast="知识产权"><i>知</i><span>知识产权</span></button>
+              <button class="icon-service" type="button" data-toast="法律咨询"><i>法</i><span>法律咨询</span></button>
+              <button class="icon-service" type="button" data-toast="企业差旅"><i>旅</i><span>企业差旅</span></button>
+              <button class="icon-service" type="button" data-toast="产业供需"><i>供</i><span>产业供需</span></button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen ai-screen" id="screen-ai" data-screen="ai">
+        <div class="ai-hero">
+          <div class="ai-hero-copy">
+            <small>平安大模型能力</small>
+            <h2>您好，我是<br>平安万洋AI管家</h2>
+            <p>我能理解企业经营问题，调用园区与金融服务，帮您把事情直接办成。</p>
+            <div class="ai-capabilities"><span>企业经营</span><span>园区办事</span><span>综合金融</span></div>
+          </div>
+          <div class="robot" aria-hidden="true"><div class="robot-face"></div></div>
+        </div>
+        <div class="chat">
+          <div class="suggestion-panel" id="suggestionPanel">
+            <strong>试试这样问我</strong>
+            <div class="ai-actions">
+              <button class="ai-action" type="button" data-ai-demo="finance"><i>融</i><span>申请500万设备融资</span></button>
+              <button class="ai-action" type="button" data-ai-demo="bill"><i>账</i><span>查询本月待缴账单</span></button>
+              <button class="ai-action" type="button" data-ai-demo="repair"><i>修</i><span>食堂门口路灯坏了</span></button>
+              <button class="ai-action" type="button" data-ai-demo="policy"><i>策</i><span>匹配可申报政策</span></button>
+            </div>
+          </div>
+          <div class="messages" id="messages">
+            <div class="message">王总，下午好。我已连接您授权的园区经营数据和企业服务能力。今天想了解经营情况，还是需要我直接帮您办事？</div>
+          </div>
+        </div>
+        <form class="chat-composer" id="chatForm">
+          <input id="chatInput" type="text" autocomplete="off" placeholder="输入需求，例如：帮我找500万设备款" aria-label="向AI助手提问">
+          <button class="send-button" type="submit" aria-label="发送">➤</button>
+        </form>
+      </section>
+
+      <section class="screen" id="screen-my" data-screen="my">
+        <div class="profile-top">
+          <div class="profile-head">
+            <div class="avatar">王</div>
+            <div><h2>王乐康</h2><p>企业管理员 · 138****6028</p></div>
+            <span class="verified">企业已认证</span>
+          </div>
+          <div class="company-card">
+            <small>当前企业</small><strong>浙江博锐汽配有限公司</strong>
+            <div class="company-meta"><span>平阳万洋众创城 · 12幢</span><span>园区信用 A级</span></div>
+          </div>
+        </div>
+        <div class="my-body">
+          <div class="my-grid">
+            <button class="my-shortcut" type="button" data-toast="我的申请"><i>申</i><span>我的申请</span></button>
+            <button class="my-shortcut" type="button" data-toast="融资进度"><i>融</i><span>融资进度</span></button>
+            <button class="my-shortcut" type="button" data-modal="bill"><i>账</i><span>缴费记录</span></button>
+            <button class="my-shortcut" type="button" data-toast="我的工单"><i>单</i><span>我的工单</span></button>
+          </div>
+          <div class="section-title"><strong>企业服务</strong></div>
+          <div class="list-card">
+            <button class="list-item" type="button" data-toast="企业认证信息"><i>企</i><strong>企业认证信息</strong><span>›</span></button>
+            <button class="list-item" type="button" data-toast="授权与数据管理"><i>权</i><strong>授权与数据管理</strong><span>3项授权 ›</span></button>
+            <button class="list-item" type="button" data-toast="发票管理"><i>票</i><strong>发票管理</strong><span>›</span></button>
+            <button class="list-item" type="button" data-toast="员工与代发"><i>薪</i><strong>员工与代发</strong><span>58人 ›</span></button>
+          </div>
+          <div class="section-title"><strong>通用服务</strong></div>
+          <div class="list-card">
+            <button class="list-item" type="button" data-toast="消息中心"><i>息</i><strong>消息中心</strong><span>2条 ›</span></button>
+            <button class="list-item" type="button" data-toast="联系园区管家"><i>客</i><strong>联系园区管家</strong><span>›</span></button>
+            <button class="list-item" type="button" data-toast="帮助与反馈"><i>助</i><strong>帮助与反馈</strong><span>›</span></button>
+            <button class="list-item" type="button" data-toast="隐私与安全"><i>安</i><strong>隐私与安全</strong><span>›</span></button>
+          </div>
+        </div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="主导航">
+        <button class="nav-button active" type="button" data-tab="home"><i>⌂</i><span>首页</span></button>
+        <button class="nav-button" type="button" data-tab="services"><i>▦</i><span>服务</span></button>
+        <button class="nav-button ai-nav" type="button" data-tab="ai"><i>AI</i><span>AI管家</span></button>
+        <button class="nav-button" type="button" data-tab="my"><i>○</i><span>我的</span></button>
+      </nav>
+
+      <div class="modal-layer" id="modalLayer" role="dialog" aria-modal="true" aria-label="业务办理">
+        <div class="modal" id="modalContent"></div>
+      </div>
+      <div class="toast" id="toast" role="status"></div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const screens = Array.from(document.querySelectorAll("[data-screen]"));
+      const navButtons = Array.from(document.querySelectorAll(".bottom-nav [data-tab]"));
+      const toast = document.getElementById("toast");
+      const modalLayer = document.getElementById("modalLayer");
+      const modalContent = document.getElementById("modalContent");
+      const messages = document.getElementById("messages");
+      const suggestionPanel = document.getElementById("suggestionPanel");
+      const chatForm = document.getElementById("chatForm");
+      const chatInput = document.getElementById("chatInput");
+      let toastTimer;
+      let activeDemo = null;
+
+      const showTab = (name) => {
+        screens.forEach((screen) => screen.classList.toggle("active", screen.dataset.screen === name));
+        navButtons.forEach((button) => button.classList.toggle("active", button.dataset.tab === name));
+        const active = screens.find((screen) => screen.dataset.screen === name);
+        if (active) active.scrollTop = 0;
+      };
+
+      const showToast = (text) => {
+        clearTimeout(toastTimer);
+        toast.textContent = text;
+        toast.classList.add("show");
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
+      };
+
+      const closeModal = () => {
+        modalLayer.classList.remove("open");
+        modalContent.replaceChildren();
+      };
+
+      const openBill = () => {
+        modalContent.innerHTML = `
+          <div class="modal-handle"></div>
+          <div class="modal-head"><h3>本月待缴账单</h3><button class="modal-close" type="button" aria-label="关闭">×</button></div>
+          <div class="bill-total"><small>待缴合计</small><strong>¥ 126,380.00</strong></div>
+          <div class="bill-lines">
+            <div class="bill-line"><span>7月物业服务费</span><strong>¥ 36,800.00</strong></div>
+            <div class="bill-line"><span>6月园区水费</span><strong>¥ 8,580.00</strong></div>
+            <div class="bill-line"><span>7月厂房租金</span><strong>¥ 81,000.00</strong></div>
+          </div>
+          <button class="primary-button" id="payButton" type="button">平安银行一站通支付</button>`;
+        modalLayer.classList.add("open");
+        modalContent.querySelector(".modal-close").addEventListener("click", closeModal);
+        modalContent.querySelector("#payButton").addEventListener("click", () => {
+          modalContent.innerHTML = `<div class="modal-handle"></div><div class="success"><div class="success-mark">✓</div><h3>支付成功</h3><p>账单已自动核销，电子发票将在2分钟内生成。</p><button class="primary-button" id="doneButton" type="button">完成</button></div>`;
+          modalContent.querySelector("#doneButton").addEventListener("click", closeModal);
+        });
+      };
+
+      const addMessage = (text, type = "") => {
+        const node = document.createElement("div");
+        node.className = `message ${type}`.trim();
+        node.textContent = text;
+        messages.appendChild(node);
+        return node;
+      };
+
+      const addResult = (kind) => {
+        const node = document.createElement("article");
+        node.className = "ai-result";
+        if (kind === "finance") {
+          node.innerHTML = `
+            <div class="result-head"><strong>AI融资方案 · 平安设备e贷</strong><span>预审可申请</span></div>
+            <p class="result-desc">根据企业近12个月经营、用电和代账授权数据，已为您匹配设备采购融资方案。</p>
+            <div class="result-metrics"><div><strong>500万</strong><span>建议额度</span></div><div><strong>36期</strong><span>建议期限</span></div><div><strong>1天</strong><span>最快审批</span></div></div>
+            <button class="result-action" type="button">授权数据并一键预审</button>
+            <div class="result-source">判断依据：销售增长18% · 用电增长12% · 纳税信用A级 · 园区履约正常</div>`;
+          node.querySelector(".result-action").addEventListener("click", () => showToast("预审申请已生成，材料完成度82%"));
+        } else if (kind === "bill") {
+          node.innerHTML = `
+            <div class="result-head"><strong>7月待缴账单</strong><span>已核验</span></div>
+            <p class="result-desc">共有3笔待缴费用，合计126,380元，最晚缴费日为7月31日。</p>
+            <div class="result-metrics"><div><strong>3笔</strong><span>待缴账单</span></div><div><strong>12.64万</strong><span>合计金额</span></div><div><strong>7月31日</strong><span>最晚日期</span></div></div>
+            <button class="result-action" type="button">查看并一站通缴费</button>
+            <div class="result-source">数据来源：万洋园区合同账单中心</div>`;
+          node.querySelector(".result-action").addEventListener("click", openBill);
+        } else if (kind === "repair") {
+          node.innerHTML = `
+            <div class="result-head"><strong>公共设施报修工单</strong><span>已创建</span></div>
+            <p class="result-desc">位置：平阳万洋众创城食堂门口第3个路灯。问题：灯具故障，需物业工程人员检修。</p>
+            <div class="result-metrics"><div><strong>WX-0725</strong><span>工单编号</span></div><div><strong>工程组</strong><span>派单班组</span></div><div><strong>2小时</strong><span>预计响应</span></div></div>
+            <button class="result-action" type="button">查看工单进度</button>
+            <div class="result-source">AI已完成意图识别、位置提取、工单预填与自动派单</div>`;
+          node.querySelector(".result-action").addEventListener("click", () => showToast("工单已接单，工程人员正在前往"));
+        } else {
+          node.innerHTML = `
+            <div class="result-head"><strong>AI政策匹配报告</strong><span>匹配3项</span></div>
+            <p class="result-desc">结合企业汽摩配行业、营收规模、研发投入与设备更新计划，推荐优先申报以下政策。</p>
+            <div class="result-metrics"><div><strong>最高80万</strong><span>技改补助</span></div><div><strong>7月30日</strong><span>申报截止</span></div><div><strong>86%</strong><span>材料就绪度</span></div></div>
+            <button class="result-action" type="button">AI生成申报材料清单</button>
+            <div class="result-source">来源：温州市制造业技改政策库 · 企业授权资料</div>`;
+          node.querySelector(".result-action").addEventListener("click", () => showToast("已生成材料清单，共12项"));
+        }
+        messages.appendChild(node);
+      };
+
+      const demoCopy = {
+        finance: {
+          user: "我们准备新增一条生产线，需要500万设备款，帮我看看怎么融资。",
+          response: "已识别为设备采购融资需求。我正在结合您授权的经营数据、园区履约记录和银行产品准入规则进行匹配。"
+        },
+        bill: {
+          user: "查一下我们公司这个月还有哪些费用没交。",
+          response: "好的，我已连接园区账单中心，正在核对合同、物业和水费账单。"
+        },
+        repair: {
+          user: "食堂门口第3个路灯坏了，帮我报修。",
+          response: "已识别报修地点和故障类型。我会直接生成公共设施报修工单，并派送给园区物业工程组。"
+        },
+        policy: {
+          user: "我们今年准备做设备技改，有哪些补贴可以申请？",
+          response: "我正在根据企业行业、营收、研发投入和设备更新计划，匹配当前可申报政策。"
+        },
+        insight: {
+          user: "分析一下我们最近的经营情况和资金需求。",
+          response: "近3个月用电量和用工人数持续增长，显示订单与产能利用率上升。我建议提前准备设备融资与短期流动资金。"
+        }
+      };
+
+      const runDemo = (kind) => {
+        const copy = demoCopy[kind] || demoCopy.finance;
+        activeDemo = kind === "insight" ? "finance" : kind;
+        suggestionPanel.style.display = "none";
+        addMessage(copy.user, "user");
+        const thinking = addMessage("平安大模型正在理解意图并调用园区与金融服务", "thinking");
+        setTimeout(() => {
+          thinking.remove();
+          addMessage(copy.response);
+          setTimeout(() => addResult(activeDemo), 420);
+        }, 650);
+      };
+
+      document.addEventListener("click", (event) => {
+        const tab = event.target.closest("[data-tab]");
+        if (tab) showTab(tab.dataset.tab);
+        const toastTarget = event.target.closest("[data-toast]");
+        if (toastTarget) showToast(toastTarget.dataset.toast);
+        const modalTarget = event.target.closest("[data-modal]");
+        if (modalTarget?.dataset.modal === "bill") openBill();
+        const aiTarget = event.target.closest("[data-open-ai]");
+        if (aiTarget) {
+          showTab("ai");
+          const kind = aiTarget.dataset.openAi;
+          if (kind && kind !== "default") setTimeout(() => runDemo(kind), 120);
+        }
+        const demoTarget = event.target.closest("[data-ai-demo]");
+        if (demoTarget) runDemo(demoTarget.dataset.aiDemo);
+        const category = event.target.closest(".category-tab");
+        if (category) {
+          document.querySelectorAll(".category-tab").forEach((button) => button.classList.toggle("active", button === category));
+          showToast(`已筛选：${category.textContent}`);
+        }
+      });
+
+      modalLayer.addEventListener("click", (event) => {
+        if (event.target === modalLayer) closeModal();
+      });
+
+      chatForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const value = chatInput.value.trim();
+        if (!value) return;
+        chatInput.value = "";
+        const lower = value.toLowerCase();
+        if (value.includes("报修") || value.includes("路灯") || value.includes("坏")) runDemo("repair");
+        else if (value.includes("账单") || value.includes("缴费") || value.includes("费用")) runDemo("bill");
+        else if (value.includes("政策") || value.includes("补贴") || value.includes("申报")) runDemo("policy");
+        else if (value.includes("融资") || value.includes("贷款") || value.includes("设备") || lower.includes("500")) runDemo("finance");
+        else {
+          suggestionPanel.style.display = "none";
+          addMessage(value, "user");
+          const thinking = addMessage("平安大模型正在检索园区知识并生成回答", "thinking");
+          setTimeout(() => {
+            thinking.remove();
+            addMessage("我可以继续帮您查询园区事项，也可以直接发起缴费、报修、开户、票据或融资服务。为了更准确办理，请告诉我具体事项和期望结果。");
+          }, 650);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
