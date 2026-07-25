@@ -6,6 +6,8 @@
 - 产品功能思维导图
 - APP／小程序MVP高保真原型
 
+访问地址：<https://jenny-huijing.github.io/wanyang-product-solution/>
+
 ## 页面入口
 
 - 首页：`/`
