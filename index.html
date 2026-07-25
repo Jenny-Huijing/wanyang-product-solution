@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="万洋产业园数智金融服务平台完整产品方案">
+  <meta property="og:title" content="万洋产业园数智金融服务平台">
+  <meta property="og:description" content="园区运营 · 企业成长 · 数据智能 · 综合金融">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://jenny-huijing.github.io/wanyang-product-solution/og.png">
+  <title>万洋产业园数智金融服务平台｜完整产品方案</title>
+  <style>
+    :root {
+      --navy-950: #07162d;
+      --navy-900: #0b2142;
+      --navy-800: #12345f;
+      --navy-700: #1b4c82;
+      --blue-600: #1974c8;
+      --blue-100: #e9f4ff;
+      --orange-600: #e65f19;
+      --orange-100: #fff1e9;
+      --green-600: #15806f;
+      --green-100: #e7f7f3;
+      --purple-600: #6951b6;
+      --purple-100: #f0ecff;
+      --ink-900: #142033;
+      --ink-700: #40506a;
+      --ink-500: #6e7c91;
+      --line: #dfe5ed;
+      --surface: #f5f7fa;
+      --white: #fff;
+      --shadow: 0 18px 50px rgba(11, 33, 66, .10);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink-900);
+      background: var(--white);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: -5rem;
+      z-index: 100;
+      padding: .7rem 1rem;
+      color: var(--white);
+      background: var(--navy-900);
+      border-radius: var(--radius-sm);
+    }
+    .skip-link:focus { top: 1rem; }
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 80;
+      width: 0;
+      height: 4px;
+      background: var(--orange-600);
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      color: var(--white);
+      background: rgba(7, 22, 45, .96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 2rem));
+      min-height: 66px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      margin-right: auto;
+      font-weight: 650;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--orange-600);
+      border-radius: 8px;
+      font-size: .8rem;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+    }
+    .nav a {
+      padding: .45rem .6rem;
+      color: rgba(255, 255, 255, .72);
+      border-radius: 8px;
+      font-size: .85rem;
+      text-decoration: none;
+    }
+    .nav a:hover,
+    .nav a[aria-current="true"] {
+      color: var(--white);
+      background: rgba(255, 255, 255, .10);
+    }
+    .nav a.nav-prototype {
+      margin-left: .3rem;
+      color: var(--white);
+      background: rgba(230, 95, 25, .16);
+      border: 1px solid rgba(230, 95, 25, .65);
+    }
+    .nav a.nav-prototype:hover {
+      background: var(--orange-600);
+      border-color: var(--orange-600);
+    }
+    .mode-switch {
+      display: flex;
+      gap: .2rem;
+      padding: .2rem;
+      background: rgba(255, 255, 255, .08);
+      border-radius: 10px;
+    }
+    .mode-switch button,
+    .menu-button {
+      border: 0;
+      color: rgba(255, 255, 255, .72);
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .mode-switch button {
+      padding: .4rem .65rem;
+      font-size: .8rem;
+    }
+    .mode-switch button[aria-pressed="true"] {
+      color: var(--navy-950);
+      background: var(--white);
+    }
+    .menu-button {
+      display: none;
+      padding: .45rem .65rem;
+      font-size: 1.1rem;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 75% 15%, rgba(25, 116, 200, .40), transparent 28rem),
+        radial-gradient(circle at 15% 80%, rgba(230, 95, 25, .25), transparent 24rem),
+        linear-gradient(145deg, var(--navy-950), var(--navy-800));
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 2rem));
+      min-height: 690px;
+      margin: 0 auto;
+      padding: 7rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 4rem;
+    }
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: #93c7f8;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+    .hero-lead {
+      max-width: 760px;
+      margin: 1.5rem 0 0;
+      color: rgba(255, 255, 255, .78);
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 2rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .65rem 1.1rem;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-weight: 650;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button-primary {
+      color: var(--white);
+      background: var(--orange-600);
+    }
+    .button-secondary {
+      color: var(--white);
+      background: rgba(255, 255, 255, .08);
+      border-color: rgba(255, 255, 255, .28);
+    }
+    .hero-panel {
+      padding: 1.3rem;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 28px 80px rgba(0,0,0,.22);
+      backdrop-filter: blur(15px);
+    }
+    .hero-panel-title {
+      margin: 0 0 1rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.62);
+    }
+    .hero-stack {
+      display: grid;
+      gap: .65rem;
+    }
+    .hero-stack > div {
+      padding: 1rem;
+      background: rgba(255, 255, 255, .07);
+      border-left: 3px solid #7ebef7;
+      border-radius: 10px;
+    }
+    .hero-stack strong { display: block; font-size: 1.05rem; }
+    .hero-stack span { color: rgba(255,255,255,.62); font-size: .82rem; }
+    .hero-stats {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: -3.2rem auto 0;
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+    .stat {
+      padding: 1.35rem;
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child { border-right: 0; }
+    .stat strong {
+      display: block;
+      color: var(--navy-800);
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      line-height: 1.15;
+    }
+    .stat span { color: var(--ink-500); font-size: .82rem; }
+    .stat-note {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 1rem auto 0;
+      color: var(--ink-500);
+      font-size: .78rem;
+      text-align: right;
+    }
+    main { overflow: hidden; }
+    .section {
+      padding: 6rem 0;
+      scroll-margin-top: 70px;
+    }
+    .section-alt { background: var(--surface); }
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+    .section-head {
+      max-width: 790px;
+      margin-bottom: 2.6rem;
+    }
+    .section-no {
+      display: inline-block;
+      margin-bottom: .7rem;
+      color: var(--orange-600);
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .1em;
+    }
+    h2 {
+      margin: 0;
+      color: var(--navy-900);
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.16;
+      letter-spacing: -.03em;
+    }
+    h3 {
+      margin: 0;
+      color: var(--navy-900);
+      font-size: 1.22rem;
+      line-height: 1.4;
+    }
+    .section-lead {
+      margin: 1rem 0 0;
+      color: var(--ink-700);
+      font-size: 1.06rem;
+    }
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 1rem;
+    }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card {
+      padding: 1.4rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .card-accent {
+      border-top: 4px solid var(--blue-600);
+      box-shadow: 0 12px 30px rgba(11, 33, 66, .06);
+    }
+    .card-orange { border-top-color: var(--orange-600); }
+    .card-green { border-top-color: var(--green-600); }
+    .card-purple { border-top-color: var(--purple-600); }
+    .card p { margin: .7rem 0 0; color: var(--ink-700); }
+    .card ul,
+    .checklist,
+    .plain-list {
+      margin: .8rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .card li,
+    .checklist li,
+    .plain-list li {
+      position: relative;
+      padding: .32rem 0 .32rem 1rem;
+      color: var(--ink-700);
+    }
+    .card li::before,
+    .checklist li::before,
+    .plain-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .92rem;
+      width: 5px;
+      height: 5px;
+      background: var(--blue-600);
+      border-radius: 50%;
+    }
+    .quote {
+      margin: 2rem 0 0;
+      padding: 1.4rem 1.6rem;
+      color: var(--navy-900);
+      background: linear-gradient(90deg, var(--blue-100), var(--white));
+      border-left: 5px solid var(--blue-600);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 1.15rem;
+      font-weight: 650;
+    }
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .55rem;
+      align-items: stretch;
+    }
+    .journey-step {
+      position: relative;
+      min-height: 140px;
+      padding: 1.1rem;
+      color: var(--white);
+      background: var(--navy-800);
+      border-radius: var(--radius-md);
+    }
+    .journey-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -.48rem;
+      top: 50%;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--orange-600);
+      background: var(--white);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+    .journey-step small {
+      display: block;
+      color: #8fc7f7;
+      font-weight: 700;
+    }
+    .journey-step strong {
+      display: block;
+      margin-top: .4rem;
+      font-size: 1.05rem;
+    }
+    .journey-step span {
+      display: block;
+      margin-top: .35rem;
+      color: rgba(255,255,255,.67);
+      font-size: .82rem;
+    }
+    .compare {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .compare-row {
+      display: grid;
+      grid-template-columns: .8fr 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .compare-row:last-child { border-bottom: 0; }
+    .compare-row > div { padding: .9rem 1rem; }
+    .compare-head {
+      color: var(--white);
+      background: var(--navy-900);
+      font-weight: 650;
+    }
+    .compare-label {
+      color: var(--navy-900);
+      background: var(--surface);
+      font-weight: 650;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: .34rem .65rem;
+      color: var(--navy-800);
+      background: var(--blue-100);
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 650;
+    }
+    .architecture {
+      display: grid;
+      gap: .85rem;
+    }
+    .arch-layer {
+      padding: 1.1rem;
+      border-radius: var(--radius-md);
+    }
+    .arch-layer h3 { margin-bottom: .8rem; }
+    .arch-items {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .55rem;
+    }
+    .arch-items.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .arch-items.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .arch-item {
+      padding: .75rem;
+      text-align: center;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(20, 32, 51, .08);
+      border-radius: 9px;
+      font-size: .87rem;
+    }
+    .arch-item strong,
+    .arch-item small { display: block; }
+    .arch-item small {
+      margin-top: .25rem;
+      color: var(--ink-500);
+      font-size: .74rem;
+      line-height: 1.5;
+    }
+    .arch-entry { background: var(--blue-100); }
+    .arch-core { background: var(--orange-100); }
+    .arch-middle { background: var(--green-100); }
+    .arch-eco { background: var(--purple-100); }
+    .arch-base { background: #edf0f5; }
+    .domain {
+      padding: 1.3rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .domain-number {
+      display: inline-grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      margin-bottom: .7rem;
+      color: var(--white);
+      background: var(--navy-800);
+      border-radius: 9px;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .domain-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .42rem;
+      margin-top: 1rem;
+    }
+    .domain-list span {
+      padding: .52rem .6rem;
+      color: var(--ink-700);
+      background: var(--surface);
+      border-radius: 8px;
+      font-size: .84rem;
+    }
+    .tag {
+      display: inline-block;
+      margin-left: .35rem;
+      padding: .12rem .35rem;
+      color: var(--green-600);
+      background: var(--green-100);
+      border-radius: 4px;
+      font-size: .68rem;
+      vertical-align: .12rem;
+    }
+    .tag-new {
+      color: var(--orange-600);
+      background: var(--orange-100);
+    }
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .75rem;
+    }
+    .role {
+      padding: 1rem;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .role strong { display: block; color: var(--navy-900); }
+    .role span { color: var(--ink-500); font-size: .8rem; }
+    .scenario {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .scenario-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      color: var(--white);
+      background: var(--navy-800);
+      border-radius: 12px;
+    }
+    .scenario-title small { color: #9dcbf5; }
+    .scenario-title strong { font-size: 1.15rem; }
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .4rem;
+    }
+    .flow span {
+      padding: .4rem .55rem;
+      color: var(--ink-700);
+      background: var(--surface);
+      border-radius: 7px;
+      font-size: .8rem;
+    }
+    .flow b { color: var(--orange-600); }
+    .data-loop {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: .45rem;
+      align-items: stretch;
+    }
+    .loop-step {
+      position: relative;
+      padding: 1rem .7rem;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .loop-step:not(:last-child)::after {
+      content: "›";
+      position: absolute;
+      right: -.38rem;
+      top: 50%;
+      z-index: 2;
+      color: var(--orange-600);
+      font-size: 1.5rem;
+      font-weight: 700;
+      transform: translateY(-50%);
+    }
+    .loop-step strong { display: block; color: var(--navy-900); }
+    .loop-step span { color: var(--ink-500); font-size: .78rem; }
+    .boundary {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr .8fr 1fr;
+      gap: .8rem;
+    }
+    .boundary > div {
+      padding: 1.2rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .boundary-wy { background: var(--blue-100); }
+    .boundary-safe { background: var(--green-100); }
+    .boundary-pa { background: var(--orange-100); }
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .phase {
+      position: relative;
+      padding: 1.3rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .phase::before {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 5px;
+      margin-bottom: .9rem;
+      background: var(--orange-600);
+      border-radius: 5px;
+    }
+    .phase small { color: var(--ink-500); }
+    .phase strong { display: block; margin: .15rem 0 .6rem; color: var(--navy-900); }
+    .mvp {
+      margin-top: 1.5rem;
+      padding: 1.4rem;
+      color: var(--white);
+      background: linear-gradient(130deg, var(--navy-900), var(--navy-700));
+      border-radius: var(--radius-lg);
+    }
+    .mvp h3 { color: var(--white); }
+    .mvp-items {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .55rem;
+      margin-top: 1rem;
+    }
+    .mvp-items div {
+      padding: .75rem;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 9px;
+      text-align: center;
+      font-size: .84rem;
+    }
+    .metric {
+      padding: 1.2rem;
+      background: var(--white);
+      border-left: 4px solid var(--blue-600);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .metric strong {
+      display: block;
+      color: var(--navy-900);
+      font-size: 1.05rem;
+    }
+    .metric span { color: var(--ink-500); font-size: .82rem; }
+    .decision {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 90% 15%, rgba(25,116,200,.35), transparent 28rem),
+        var(--navy-950);
+    }
+    .decision h2,
+    .decision h3 { color: var(--white); }
+    .decision .section-lead { color: rgba(255,255,255,.70); }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .decision-item {
+      padding: 1.3rem;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-md);
+    }
+    .decision-item span {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: .8rem;
+      color: var(--navy-950);
+      background: var(--white);
+      border-radius: 50%;
+      font-weight: 700;
+    }
+    .final-quote {
+      max-width: 920px;
+      margin: 3rem auto 0;
+      text-align: center;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 650;
+      line-height: 1.35;
+    }
+    .footer {
+      padding: 2.5rem 0;
+      color: rgba(255,255,255,.62);
+      background: #041025;
+    }
+    .footer-inner {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    .footer a { color: var(--white); }
+    .back-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 50;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      pointer-events: none;
+      color: var(--white);
+      background: var(--navy-900);
+      border: 0;
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: opacity .2s ease;
+    }
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .exec-mode .detail-only { display: none !important; }
+    .exec-mode .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .exec-mode .section.optional-section { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    @media (max-width: 1050px) {
+      .nav { display: none; }
+      .nav.open {
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        display: grid;
+        padding: .8rem 1rem;
+        background: var(--navy-950);
+        border-top: 1px solid rgba(255,255,255,.12);
+      }
+      .nav.open a.nav-prototype { margin: .25rem 0 0; }
+      .menu-button { display: inline-block; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-panel { max-width: 700px; }
+      .hero-stats { grid-template-columns: repeat(3, 1fr); }
+      .stat:nth-child(3) { border-right: 0; }
+      .stat:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
+      .roles { grid-template-columns: repeat(3, 1fr); }
+      .arch-items { grid-template-columns: repeat(2, 1fr); }
+      .data-loop { grid-template-columns: repeat(3, 1fr); }
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+      .mvp-items { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .section { padding: 4.2rem 0; }
+      .mode-switch { display: none; }
+      .hero-inner { min-height: auto; padding: 5.5rem 0 6rem; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .stat,
+      .stat:nth-child(3) { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .stat:nth-child(even) { border-right: 0; }
+      .stat:last-child { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .roles,
+      .scenario,
+      .boundary,
+      .decision-grid { grid-template-columns: 1fr; }
+      .journey { grid-template-columns: 1fr; }
+      .journey-step:not(:last-child)::after {
+        content: "↓";
+        right: 50%;
+        top: auto;
+        bottom: -.6rem;
+        transform: translateX(50%);
+      }
+      .compare { overflow-x: auto; }
+      .compare-row { min-width: 680px; }
+      .data-loop { grid-template-columns: 1fr 1fr; }
+      .loop-step:not(:last-child)::after { display: none; }
+      .timeline,
+      .mvp-items { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media print {
+      .topbar,
+      .progress,
+      .back-top,
+      .hero-actions { display: none !important; }
+      .hero { color: var(--ink-900); background: var(--white); }
+      .hero::after { display: none; }
+      .hero-lead { color: var(--ink-700); }
+      .hero-panel { color: var(--ink-900); background: var(--surface); box-shadow: none; }
+      .hero-stack > div { background: var(--white); }
+      .hero-stack span,
+      .hero-panel-title { color: var(--ink-500); }
+      .section { padding: 2rem 0; break-inside: avoid; }
+      .card,
+      .domain,
+      .scenario,
+      .phase { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至正文</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span class="brand-mark">WY</span>
+        <span>万洋产业园金融平台</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="章节导航">
+        <a href="#opportunity">项目判断</a>
+        <a href="#diagnosis">现状诊断</a>
+        <a href="#blueprint">产品蓝图</a>
+        <a href="#functions">产品功能</a>
+        <a href="#data">数据金融</a>
+        <a href="#roadmap">实施路线</a>
+        <a href="#value">建设价值</a>
+        <a class="nav-prototype" href="./mvp/">原型示例</a>
+      </nav>
+      <div class="mode-switch" aria-label="阅读模式">
+        <button type="button" id="execMode" aria-pressed="false">领导摘要</button>
+        <button type="button" id="fullMode" aria-pressed="true">完整方案</button>
+      </div>
+      <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="nav" aria-label="展开导航">☰</button>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">PRODUCT SOLUTION · 2026</p>
+        <h1>万洋产业园<br>数智金融服务平台</h1>
+        <p class="hero-lead">以园区运营为底座，以企业成长为主线，以数据智能为引擎，以综合金融为增值核心，建设面向未来十年的产业园经营服务操作系统。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#blueprint">查看产品蓝图</a>
+          <a class="button button-secondary" href="./wanyang-product-mindmap.html">查看功能思维导图</a>
+          <a class="button button-secondary" href="./mvp/">体验APP原型</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="平台总体结构">
+        <p class="hero-panel-title">一平台 · 两系统 · 三中台 · N生态</p>
+        <div class="hero-stack">
+          <div><strong>园区运营管理系统</strong><span>覆盖现有功能，升级集团统一运营能力</span></div>
+          <div><strong>金融服务运营系统</strong><span>从金融产品入口升级为完整经营闭环</span></div>
+          <div><strong>业务／数据／开放中台</strong><span>统一企业、交易、画像与生态接入能力</span></div>
+          <div><strong>产业服务生态</strong><span>企业服务、员工生活、金融机构与服务商</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="hero-stats" aria-label="调研关键规模">
+    <div class="stat"><strong>270+</strong><span>全国园区项目</span></div>
+    <div class="stat"><strong>2—3万</strong><span>入驻制造企业</span></div>
+    <div class="stat"><strong>约280万</strong><span>产业工人</span></div>
+    <div class="stat"><strong>约120亿</strong><span>年票据需求</span></div>
+    <div class="stat"><strong>超550亿</strong><span>园区厂房按揭</span></div>
+  </div>
+  <p class="stat-note">注：以上为调研访谈口径，正式立项和商务测算前需逐项核验。</p>
+
+  <main id="main">
+    <section class="section" id="opportunity">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">01 · 项目判断</span>
+          <h2>这不是再建设一个园区APP</h2>
+          <p class="section-lead">项目的本质，是把万洋已有的园区、企业、员工和经营数据，转化为可持续的企业服务能力、金融服务能力和数据经营能力。</p>
+        </div>
+        <div class="grid-3">
+          <article class="card card-accent">
+            <h3>运营服务是入口</h3>
+            <p>物业、水电、停车、报修、商户、企业服务等高频场景，让平台成为企业和员工每天使用的基础设施。</p>
+          </article>
+          <article class="card card-accent card-orange">
+            <h3>金融服务是增长引擎</h3>
+            <p>围绕企业和员工全生命周期，形成开户、结算、票据、融资、代发、保险与健康的综合金融服务。</p>
+          </article>
+          <article class="card card-accent card-green">
+            <h3>数据资产是长期价值</h3>
+            <p>将水电、物业、代账、物流和用工数据变成企业成长画像、需求信号和安全可用的风控能力。</p>
+          </article>
+        </div>
+        <blockquote class="quote">园区运营是底盘，金融运营是增长引擎，数据智能是连接两者的飞轮。</blockquote>
+      </div>
+    </section>
+
+    <section class="section section-alt detail-only">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">02 · 万洋业务理解</span>
+          <h2>从“研究产业”开始，贯穿企业全生命周期</h2>
+          <p class="section-lead">万洋的核心能力并非简单建房卖房，而是以产业研究、定向招商、定制建设和持续运营形成企业集聚服务能力。</p>
+        </div>
+        <div class="journey" aria-label="万洋业务链">
+          <div class="journey-step"><small>STEP 01</small><strong>产业研究</strong><span>区域产业、工商数据、五年报表、企业走访</span></div>
+          <div class="journey-step"><small>STEP 02</small><strong>筛选招商</strong><span>一个园区一个产业，择优准入而非来者不拒</span></div>
+          <div class="journey-step"><small>STEP 03</small><strong>定制建设</strong><span>围绕荷载、层高、工艺和生产需求建设厂房</span></div>
+          <div class="journey-step"><small>STEP 04</small><strong>入驻经营</strong><span>物业、能源、停车、安防、商户和企业服务</span></div>
+          <div class="journey-step"><small>STEP 05</small><strong>成长赋能</strong><span>政策、技改、融资、供应链、并购与上市</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="diagnosis">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">03 · 现状诊断</span>
+          <h2>现有系统解决了线上管理，尚未形成平台经营</h2>
+          <p class="section-lead">新平台应完整覆盖当前运营系统，但不是照搬旧架构和旧代码，而是保留业务能力、重构产品体系。</p>
+        </div>
+        <div class="compare" role="table" aria-label="现状与目标对比">
+          <div class="compare-row compare-head" role="row">
+            <div role="columnheader">维度</div><div role="columnheader">当前状态</div><div role="columnheader">目标状态</div>
+          </div>
+          <div class="compare-row" role="row">
+            <div class="compare-label" role="cell">园区运营</div><div role="cell">物业、水电、停车、商户和收费已线上化</div><div role="cell">覆盖企业全生命周期，支持集团统一与园区差异配置</div>
+          </div>
+          <div class="compare-row" role="row">
+            <div class="compare-label" role="cell">企业服务</div><div role="cell">服务零散，偏传统物业，缺少成长经营视角</div><div role="cell">从设立入驻到技改扩产、并购上市的成长服务体系</div>
+          </div>
+          <div class="compare-row" role="row">
+            <div class="compare-label" role="cell">金融服务</div><div role="cell">主要是产品入口或跳转，过程和结果不可追踪</div><div role="cell">机构、产品、线索、申请、履约、分润、对账完整闭环</div>
+          </div>
+          <div class="compare-row" role="row">
+            <div class="compare-label" role="cell">数据能力</div><div role="cell">数据用于收费和物业管理，企业视图分散</div><div role="cell">企业360、经营信号、融资识别、风险模型和贷后预警</div>
+          </div>
+          <div class="compare-row" role="row">
+            <div class="compare-label" role="cell">全国复制</div><div role="cell">系统定制化较重，模块迭代和外拓能力不足</div><div role="cell">多租户、模块化、低代码配置和标准产品包</div>
+          </div>
+        </div>
+        <div class="grid-4 detail-only" style="margin-top:1rem">
+          <article class="card"><h3>需要承接</h3><ul><li>物业收费</li><li>水电计费</li><li>停车管理</li><li>商户交易与对账</li></ul></article>
+          <article class="card"><h3>需要升级</h3><ul><li>统一账单</li><li>聚合支付</li><li>工单客服</li><li>集团经营分析</li></ul></article>
+          <article class="card"><h3>需要新增</h3><ul><li>企业成长服务</li><li>金融运营管理</li><li>数据智能风控</li><li>多机构金融超市</li></ul></article>
+          <article class="card"><h3>建议生态接入</h3><ul><li>企业HR工具</li><li>差旅与电商</li><li>物流和仓储</li><li>政府及专业服务</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="blueprint">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">04 · 产品蓝图</span>
+          <h2>一平台、两系统、三中台、N生态</h2>
+          <p class="section-lead">以一个统一服务平台连接集团、园区、企业和员工，以园区运营与金融服务两套系统承载核心业务，由三大共享中台支撑数据协同并开放连接N类生态。</p>
+        </div>
+        <div class="architecture">
+          <div class="arch-layer arch-entry">
+            <h3>一个统一服务平台 · 多角色入口与工作台</h3>
+            <div class="arch-items">
+              <div class="arch-item">集团经营驾驶舱</div><div class="arch-item">园区运营工作台</div>
+              <div class="arch-item">企业PC／移动门户</div><div class="arch-item">员工超级APP／小程序</div>
+            </div>
+          </div>
+          <div class="arch-layer arch-core">
+            <h3>两套核心业务系统</h3>
+            <div class="arch-items cols-2">
+              <div class="arch-item"><strong>园区运营管理系统</strong><small>招商、空间、物业、收费、安防、能耗、工单与企业成长服务</small></div>
+              <div class="arch-item"><strong>金融服务运营系统</strong><small>开户、支付、票据、代发、融资、保险及金融运营管理</small></div>
+            </div>
+          </div>
+          <div class="arch-layer arch-middle">
+            <h3>三大共享中台</h3>
+            <div class="arch-items cols-3">
+              <div class="arch-item"><strong>业务中台</strong><small>企业、客户、产品、订单、账户与权益</small></div>
+              <div class="arch-item"><strong>数据智能中台</strong><small>画像、经营信号、融资识别、风控模型与AI能力</small></div>
+              <div class="arch-item"><strong>开放集成中台</strong><small>API、系统集成、金融机构与生态服务接入</small></div>
+            </div>
+          </div>
+          <div class="arch-layer arch-eco">
+            <h3>N类产业服务生态</h3>
+            <div class="arch-items">
+              <div class="arch-item">金融机构生态</div><div class="arch-item">企业专业服务</div>
+              <div class="arch-item">员工生活服务</div><div class="arch-item">政府与产业链服务</div>
+            </div>
+          </div>
+          <div class="arch-layer arch-base">
+            <h3>统一技术、安全与运营底座</h3>
+            <div class="arch-items">
+              <div class="arch-item">身份／权限／租户</div><div class="arch-item">流程／规则／消息／搜索</div>
+              <div class="arch-item">统一运营／监控／DevOps</div><div class="arch-item">安全／隐私／审计／灾备</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section detail-only">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">05 · 角色与终端</span>
+          <h2>同一平台，不同角色各得其所</h2>
+        </div>
+        <div class="roles">
+          <div class="role"><strong>集团管理层</strong><span>经营驾驶舱／全国园区</span></div>
+          <div class="role"><strong>园区运营者</strong><span>收费／服务／工单／商户</span></div>
+          <div class="role"><strong>企业老板财务</strong><span>经营服务／金融服务</span></div>
+          <div class="role"><strong>企业员工</strong><span>工资／消费／生活／健康</span></div>
+          <div class="role"><strong>商户服务商</strong><span>商品／订单／结算／评价</span></div>
+          <div class="role"><strong>平安运营人员</strong><span>客户／产品／申请／服务</span></div>
+          <div class="role"><strong>其他金融机构</strong><span>产品接入／询价／反馈</span></div>
+          <div class="role"><strong>客户经理</strong><span>线索／跟进／服务工单</span></div>
+          <div class="role"><strong>政府部门</strong><span>政策／申报／园区治理</span></div>
+          <div class="role"><strong>技术与数据人员</strong><span>接口／质量／权限／审计</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="functions">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">06 · 产品功能</span>
+          <h2>四大核心产品域</h2>
+          <p class="section-lead">园区运营承担高频入口，企业成长建立服务粘性，金融前台承接客户需求，金融运营后台完成商业闭环。</p>
+        </div>
+        <div class="grid-2">
+          <article class="domain">
+            <span class="domain-number">01</span>
+            <h3>园区运营管理</h3>
+            <div class="domain-list">
+              <span>产业研究与招商 <i class="tag tag-new">新增</i></span><span>企业筛选与准入 <i class="tag tag-new">新增</i></span>
+              <span>厂房租售与入退园</span><span>宿舍／商铺／车位</span>
+              <span>合同与周期计费</span><span>物业费与欠费催缴</span>
+              <span>水电表计与计价</span><span>车辆／月卡／临停</span>
+              <span>报修／巡逻／安防</span><span>巡灯与灯光指数 <i class="tag tag-new">新增</i></span>
+              <span>商户与聚合支付</span><span>统一对账与开票 <i class="tag tag-new">新增</i></span>
+            </div>
+          </article>
+          <article class="domain">
+            <span class="domain-number">02</span>
+            <h3>企业成长服务</h3>
+            <div class="domain-list">
+              <span>工商注册与变更</span><span>财税代理与代账</span>
+              <span>政策匹配与申报</span><span>高新企业认定</span>
+              <span>技改与数字化转型</span><span>知识产权与法律</span>
+              <span>招聘／培训／用工</span><span>差旅／采购／物流</span>
+              <span>供需发布与询报价</span><span>电子合同与在线支付</span>
+              <span>履约跟踪与评价</span><span>企业社区与产业交流</span>
+            </div>
+          </article>
+          <article class="domain">
+            <span class="domain-number">03</span>
+            <h3>金融服务前台</h3>
+            <div class="domain-list">
+              <span>企业预约开户</span><span>支付结算与现金管理</span>
+              <span>票据询价与贴现</span><span>普惠经营融资</span>
+              <span>设备与技改融资</span><span>厂房按揭融资</span>
+              <span>代发工资与开卡</span><span>信用卡与个人贷款</span>
+              <span>供应链金融</span><span>保险与员工健康</span>
+              <span>基金／并购／上市</span><span>多机构金融超市</span>
+            </div>
+          </article>
+          <article class="domain">
+            <span class="domain-number">04</span>
+            <h3>金融运营管理</h3>
+            <div class="domain-list">
+              <span>机构与产品准入</span><span>价格／额度／优先级</span>
+              <span>客户线索与商机</span><span>准入匹配与业务路由</span>
+              <span>申请资料与授权</span><span>审批及服务进度</span>
+              <span>客户经理与工单</span><span>结果回传与贷后服务</span>
+              <span>计费／分润／开票</span><span>机构对账与差错处理</span>
+              <span>合规审核与审计</span><span>投诉／风险／熔断</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section optional-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">07 · 关键业务场景</span>
+          <h2>用高频场景带动平台冷启动</h2>
+        </div>
+        <div class="grid-2">
+          <article class="scenario">
+            <div class="scenario-title"><small>SCENE 01</small><strong>一站通缴费</strong><span>最高频企业入口</span></div>
+            <div><h3>统一账单、统一支付、统一对账</h3><div class="flow"><span>生成账单</span><b>›</b><span>企业扫码</span><b>›</b><span>银行通道支付</span><b>›</b><span>自动核销</span><b>›</b><span>财务对账</span></div></div>
+          </article>
+          <article class="scenario">
+            <div class="scenario-title"><small>SCENE 02</small><strong>票据服务</strong><span>最快形成金融收入</span></div>
+            <div><h3>平安优先、多机构补充</h3><div class="flow"><span>提交票据</span><b>›</b><span>平安询价</span><b>›</b><span>多行比价</span><b>›</b><span>贴现申请</span><b>›</b><span>结果回传</span></div></div>
+          </article>
+          <article class="scenario">
+            <div class="scenario-title"><small>SCENE 03</small><strong>融资识别</strong><span>数据驱动金融服务</span></div>
+            <div><h3>从“客户申请”转向“平台发现需求”</h3><div class="flow"><span>能耗增长</span><b>›</b><span>识别扩产</span><b>›</b><span>推荐设备融资</span><b>›</b><span>客户授权</span><b>›</b><span>银行审批</span></div></div>
+          </article>
+          <article class="scenario">
+            <div class="scenario-title"><small>SCENE 04</small><strong>代发与一卡通</strong><span>锁定员工生活场景</span></div>
+            <div><h3>企业、员工、园区商户公私联动</h3><div class="flow"><span>企业签约</span><b>›</b><span>批量开卡</span><b>›</b><span>工资代发</span><b>›</b><span>园区消费</span><b>›</b><span>权益运营</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="data">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">08 · 数据智能</span>
+          <h2>把经营痕迹翻译成企业成长与金融语言</h2>
+          <p class="section-lead">平台不追求集中复制全部数据，而是在明确授权、用途限定和安全审计的前提下，让园区数据可用、不可滥用。</p>
+        </div>
+        <div class="data-loop">
+          <div class="loop-step"><strong>经营数据</strong><span>水电／物业／代账／物流／用工</span></div>
+          <div class="loop-step"><strong>授权治理</strong><span>目录／标准／质量／权限／用途</span></div>
+          <div class="loop-step"><strong>企业画像</strong><span>经营、成长、风险和关系网络</span></div>
+          <div class="loop-step"><strong>机会信号</strong><span>扩产、缺资、招工、技改、风险</span></div>
+          <div class="loop-step"><strong>金融服务</strong><span>匹配、申请、审批、放款、服务</span></div>
+          <div class="loop-step"><strong>结果反哺</strong><span>交易、还款、履约和服务结果</span></div>
+        </div>
+        <div class="boundary detail-only">
+          <div class="boundary-wy"><h3>万洋数据控制域</h3><p>物业、水电、停车、代账、物流、员工和园区运营数据</p></div>
+          <div class="boundary-safe"><h3>安全协同区</h3><p>企业授权、隐私计算、联邦建模、结果回传、访问审计</p></div>
+          <div class="boundary-pa"><h3>平安金融数据域</h3><p>账户、交易、征信、授信、还款、产品与风险数据</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section optional-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">09 · 技术与合规</span>
+          <h2>平台开放，边界必须清晰</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card card-accent"><h3>集团统一、园区差异</h3><ul><li>多租户、多组织、多园区</li><li>标准模块统一下发</li><li>园区参数和流程灵活配置</li><li>全国复制与版本管理</li></ul></article>
+          <article class="card card-accent card-green"><h3>数据安全与隐私</h3><ul><li>最小必要和用途限定</li><li>企业授权与授权撤回</li><li>加密、脱敏和操作留痕</li><li>访问审计和风险告警</li></ul></article>
+          <article class="card card-accent card-orange"><h3>金融合规边界</h3><ul><li>万洋不参与授信决策</li><li>不形成资金池和“二清”</li><li>金融风险由持牌机构承担</li><li>分润模式逐项法律审查</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="roadmap">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">10 · 实施路线</span>
+          <h2>先建毛坯房，跑通首闭环，再逐步替换和复制</h2>
+          <p class="section-lead">避免一次性大而全建设，采用“新平台先上线、旧系统逐步迁移、关键业务双轨验证”的实施策略。</p>
+        </div>
+        <div class="timeline">
+          <article class="phase"><small>0—14周</small><strong>第一阶段：首闭环</strong><ul class="plain-list"><li>统一门户与身份</li><li>一站通缴费</li><li>票据、开户、代发</li><li>企业基础画像</li></ul></article>
+          <article class="phase"><small>3—6个月</small><strong>第二阶段：承接现有运营</strong><ul class="plain-list"><li>物业、水电、停车</li><li>商户与园区结算</li><li>报修、巡逻、安防</li><li>合同、账单和开票</li></ul></article>
+          <article class="phase"><small>6—18个月</small><strong>第三阶段：数据金融深化</strong><ul class="plain-list"><li>普惠融资与供应链</li><li>经营信号与风险模型</li><li>一卡通和员工生态</li><li>企业成长服务</li></ul></article>
+          <article class="phase"><small>18个月+</small><strong>第四阶段：全国复制</strong><ul class="plain-list"><li>全国园区标准产品包</li><li>多机构金融超市</li><li>对外园区SaaS输出</li><li>数据产品与生态经营</li></ul></article>
+        </div>
+        <div class="mvp">
+          <h3>平阳园区MVP建议组合</h3>
+          <div class="mvp-items">
+            <div>一站通缴费</div><div>票据服务</div><div>预约开户</div><div>代发工资</div><div>企业基础画像</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section optional-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">11 · 存量迁移</span>
+          <h2>业务不中断、资金账务准确、数据全程可追溯</h2>
+        </div>
+        <div class="grid-4">
+          <article class="card"><h3>保留接入</h3><p>OA、EHR、集团财务及暂不适合重建的成熟外围系统。</p></article>
+          <article class="card"><h3>能力重构</h3><p>物业、水电、停车、商户、支付和对账等核心运营能力。</p></article>
+          <article class="card"><h3>数据迁移</h3><p>企业、合同、账单、表计、车辆、商户及历史交易数据。</p></article>
+          <article class="card"><h3>分园切换</h3><p>平阳试点验证后逐园复制，新旧系统双轨核对后再退出旧系统。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="value">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">12 · 建设价值</span>
+          <h2>万洋、企业、员工和平安共同获得长期价值</h2>
+        </div>
+        <div class="grid-4">
+          <article class="card card-accent"><h3>对万洋</h3><ul><li>运营提效与成本优化</li><li>企业粘性和品牌提升</li><li>服务及平台收入</li><li>数据资产和对外输出</li></ul></article>
+          <article class="card card-accent card-green"><h3>对园区企业</h3><ul><li>经营事项一站办理</li><li>低成本数字化工具</li><li>政策、技改和产业服务</li><li>更便捷的金融支持</li></ul></article>
+          <article class="card card-accent card-purple"><h3>对企业员工</h3><ul><li>工资与金融服务</li><li>园区消费一卡通</li><li>衣食住行便捷服务</li><li>保险与医疗健康</li></ul></article>
+          <article class="card card-accent card-orange"><h3>对平安</h3><ul><li>企业批量获客入口</li><li>代发和零售客群</li><li>票据、结算和融资收入</li><li>数据模型与行业标准</li></ul></article>
+        </div>
+        <div class="grid-3 detail-only" style="margin-top:1rem">
+          <div class="metric"><strong>平台活跃</strong><span>企业注册率、月活率、线上缴费率、员工覆盖率</span></div>
+          <div class="metric"><strong>业务转化</strong><span>开户数、代发数、票据量、融资转化率、金融收入</span></div>
+          <div class="metric"><strong>运营效率</strong><span>收费效率、对账时长、工单时效、园区运营成本</span></div>
+          <div class="metric"><strong>企业服务</strong><span>服务订单量、政策申报数、技改项目数、满意度</span></div>
+          <div class="metric"><strong>数据价值</strong><span>数据完整率、信号准确率、模型增益、预警命中率</span></div>
+          <div class="metric"><strong>复制能力</strong><span>单园部署周期、配置复用率、接入园区和企业数量</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section decision">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-no">13 · 启动建议</span>
+          <h2>当前需要确认三个决策</h2>
+          <p class="section-lead">先冻结方向和边界，再进入数据盘点、需求澄清和MVP实施。</p>
+        </div>
+        <div class="decision-grid">
+          <article class="decision-item"><span>1</span><h3>确认产品定位</h3><p>认可“园区运营 + 企业成长 + 金融运营 + 数据智能”的总体建设方向。</p></article>
+          <article class="decision-item"><span>2</span><h3>启动平阳MVP</h3><p>以一站通缴费、票据、开户、代发和企业画像形成首个可验证闭环。</p></article>
+          <article class="decision-item"><span>3</span><h3>组建联合项目组</h3><p>万洋和平安共同完成需求冻结、数据盘点、合规论证和实施推进。</p></article>
+        </div>
+        <p class="final-quote">不是再建设一个园区APP，<br>而是建设万洋面向未来十年的经营服务基础设施。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>万洋产业园数智金融服务平台 · 产品方案</div>
+      <div><a href="./wanyang-product-mindmap.html">产品功能思维导图</a>　·　<a href="./mvp/">APP原型示例</a>　·　调研数据待正式核验</div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" type="button" aria-label="返回顶部">↑</button>
+
+  <script>
+    (() => {
+      const progress = document.getElementById("progress");
+      const backTop = document.getElementById("backTop");
+      const nav = document.getElementById("nav");
+      const menuButton = document.getElementById("menuButton");
+      const execMode = document.getElementById("execMode");
+      const fullMode = document.getElementById("fullMode");
+      const navLinks = Array.from(nav.querySelectorAll("a"));
+      const sections = navLinks
+        .filter((link) => link.getAttribute("href")?.startsWith("#"))
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      const onScroll = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? window.scrollY / max : 0;
+        progress.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
+        backTop.classList.toggle("show", window.scrollY > 700);
+
+        let current = sections[0]?.id;
+        sections.forEach((section) => {
+          if (section.getBoundingClientRect().top <= 110) current = section.id;
+        });
+        navLinks.forEach((link) => {
+          if (link.getAttribute("href")?.startsWith("#")) {
+            link.setAttribute("aria-current", String(link.getAttribute("href") === `#${current}`));
+          }
+        });
+      };
+
+      const setMode = (mode) => {
+        const isExec = mode === "exec";
+        document.body.classList.toggle("exec-mode", isExec);
+        execMode.setAttribute("aria-pressed", String(isExec));
+        fullMode.setAttribute("aria-pressed", String(!isExec));
+      };
+
+      menuButton.addEventListener("click", () => {
+        const open = nav.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(open));
+      });
+      navLinks.forEach((link) => link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }));
+      execMode.addEventListener("click", () => setMode("exec"));
+      fullMode.addEventListener("click", () => setMode("full"));
+      backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
